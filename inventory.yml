@@ -1,0 +1,7 @@
+---
+target:
+  hosts:
+    server:
+      ansible_host: 192.168.0.32
+      ansible_user: root
+      ansible_port: 22
