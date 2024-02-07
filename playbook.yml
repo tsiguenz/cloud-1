@@ -46,14 +46,10 @@
         keyring: /etc/apt/keyrings/docker.gpg
         state: present
 
-    - name: Print architecture variables
-      ansible.builtin.debug:
-        msg: "Architecture: {{ ansible_architecture }},
-          Codename: {{ ansible_lsb.codename }}"
-
     - name: Add Docker repository
       ansible.builtin.apt_repository:
-        # architecture is result of dpkg --print-architecture
+        # arch is result of 'dpkg --print-architecture'
+        # codename = jammy
         repo: >-
           deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg]
           https://download.docker.com/linux/ubuntu
