@@ -76,7 +76,7 @@ function ask_to_set_env_var() {
 
 function generate_random_env_var() {
 	print_info "Generating random value for ${1}..."
-	RAND=$(/bin/openssl rand -hex 32)
+	RAND=$(openssl rand -hex 32)
 	set_env_var "${1}" "${RAND}"
 }
 
