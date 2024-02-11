@@ -87,6 +87,7 @@ services:
             - wordpress
         volumes:
             - wordpress:/var/www/html
+            - certs:/etc/letsencrypt
         environment:
             DOMAIN_NAME: ${DOMAIN_NAME}
             EMAIL: ${WP_ADMIN_MAIL}
@@ -98,3 +99,4 @@ networks:
 volumes:
     wordpress:
     mariadb:
+    certs:
