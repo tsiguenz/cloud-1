@@ -13,6 +13,8 @@ services:
             MARIADB_USER: ${DB_USER}
             MARIADB_PASSWORD: ${DB_PASSWORD}
             MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+        volumes:
+            - mariadb:/var/lib/mysql
         healthcheck:
             test: ["CMD", "healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized"]
             interval: 10s
@@ -78,12 +80,14 @@ services:
         restart: always
         ports:
             - "80:80"
+            - "443:443"
         networks:
             - network
         depends_on:
             - wordpress
         volumes:
             - wordpress:/var/www/html
+            - certs:/etc/letsencrypt
         environment:
             DOMAIN_NAME: ${DOMAIN_NAME}
             EMAIL: ${WP_ADMIN_MAIL}
@@ -94,3 +98,5 @@ networks:
 
 volumes:
     wordpress:
+    mariadb:
+    certs:
