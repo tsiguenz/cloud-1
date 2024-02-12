@@ -7,18 +7,6 @@
         src: srcs
         dest: ./
 
-    - name: Create database directory
-      ansible.builtin.file:
-        path: data/database
-        state: directory
-        mode: '0755'
-
-    - name: Create wordpress directory
-      ansible.builtin.file:
-        path: data/wordpress
-        state: directory
-        mode: '0755'
-
     - name: Update and upgrade all packages to the latest version
       ansible.builtin.apt:
         update_cache: true
